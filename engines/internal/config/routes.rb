@@ -1,5 +1,7 @@
 Internal::Engine.routes.draw do
 
+  root 'dashboard#index'
+
   resources :sessions, path: 'acesso'
 
   resources :articles

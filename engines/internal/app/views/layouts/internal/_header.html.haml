@@ -1,0 +1,84 @@
+.ui.attached.stackable.menu
+  .ui.container
+    = link_to image_tag('/images/cj_logo_pb.png', size: '250x100'), main_app.root_path
+.ui.custom-menu.attached.stackable.menu
+  .ui.container
+    %a.item{href: "#{internal.root_path}"}
+      Dashboard
+    .ui.simple.dropdown.item
+      Artigos
+      %i.dropdown.icon
+      .menu
+        .header
+          Administrativo
+        %a.item
+          Novo artigo
+        %a.item
+          Ver todos
+        %a.item
+          Categorias
+        .header
+          Autor/Colunista
+        %a.item
+          Novo artigo
+        %a.item
+          Meus artigos
+        %a.item
+          Em revisão
+        %a.item
+          Publicados
+        .header
+          Estudo
+        %a.item
+          Meus favoritos
+        %a.item
+          Ler depois
+        %a.item
+          Artigos que gostei
+    .ui.simple.dropdown.item
+      Boletim Jurídico
+      %i.dropdown.icon
+      .menu
+        .header
+          Administrativo 
+        %a.item
+          Novo boletim
+        %a.item
+          Ver todos
+        %a.item
+          Categorias  
+
+    .ui.simple.dropdown.item
+      Questões
+      %i.dropdown.icon
+      .menu
+        .header
+          Administração
+        %a.item
+          Novo simulado
+        %a.item
+          Questões
+        .header
+          Estudo
+        %a.item
+          Novo simulado
+        %a.item
+          Meus simulados
+        %a.item
+          Meu desempenho
+    .ui.simple.dropdown.item
+      Usuários
+      %i.dropdown.icon
+      .menu
+        %a.item
+          Autores
+        %a.item
+          Revisores
+        %a.item
+          Estudantes
+        %a.item
+          Administradores
+    .right.item
+      .ui.input
+        = simple_form_for url_for, method: :get do |f|
+          = f.input :q, as: :string, label: false, input_html: { name: :q, placeholder: "Pesquisar...", value: params[:q]}

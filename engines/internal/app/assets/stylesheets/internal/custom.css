@@ -1,0 +1,13 @@
+.custom-menu {
+  background-color: #444444  !important;
+}
+
+.custom-menu .item {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.ui.dropdown .menu>.header {
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}

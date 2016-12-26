@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Conteúdo Jurídico
+    = csrf_meta_tags
+    = stylesheet_link_tag    'internal/application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'internal/application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'layouts/internal/header'
+    = yield

@@ -1,0 +1,25 @@
+.ui.attached.stackable.menu
+  .ui.container
+    = link_to image_tag('/images/cj_logo_pb.png', size: '250x100'), main_app.root_path
+.ui.custom-menu.attached.stackable.menu
+  .ui.container
+    %a.item{href: "#{main_app.root_path}"}
+      Página inicial
+    %a.item{href: "#{portal.articles_path}"}
+      Artigos
+    %a.item{href: "#{portal.authors_path}"}
+      Autores
+    %a.item{href: "#{portal.authors_path}"}
+      Jurisprudência
+    %a.item{href: "#{portal.authors_path}"}
+      Boletim Jurídico
+    .ui.simple.dropdown.item
+      Categorias
+      %i.dropdown.icon
+      .menu
+        %a.item
+          foreach
+    .right.item
+      .ui.input
+        = simple_form_for url_for, method: :get do |f|
+          = f.input :q, as: :string, label: false, input_html: { name: :q, placeholder: "Pesquisar...", value: params[:q]}
