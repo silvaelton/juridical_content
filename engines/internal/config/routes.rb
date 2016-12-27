@@ -4,6 +4,9 @@ Internal::Engine.routes.draw do
 
   resources :sessions, path: 'acesso'
 
+  resources :users
+  resources :administrators
+  
   resources :articles
   resources :article_categories
 

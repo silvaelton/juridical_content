@@ -1,0 +1,14 @@
+.ui.middle.aligned.center.aligned.grid
+  .column
+    = image_tag "/images/cj_logo_pb.png", size: '500x200'
+    = simple_form_for @session, url: sessions_path, method: :post do |f|
+      .ui.stacked.segment
+        %h2 
+          %b Acesso restrito
+        .fields
+          .field.wide.eight
+            = f.input :email, label: false, input_html: { placeholder: "Digite seu e-mail"}
+          .field.wide.eight
+            = f.input :password, label: false, input_html: { placeholder: "Digite sua senha"}
+        .field
+          = f.submit "Realizar acesso", class: 'ui fluid large blue submit button', data: { disable_with: t(:disable_with_button)}

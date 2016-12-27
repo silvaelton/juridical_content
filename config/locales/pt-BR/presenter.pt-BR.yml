@@ -1,0 +1,10 @@
+pt-BR:
+  success: "Operação realizada com sucesso!"
+  error: "Não foi possível realizar esta operação!"
+  confirm: "Tem certeza que deseja realizar esta operação?"
+  label:
+    'true': "<label class='ui label green mini'>Sim</label>"
+    'false': "<label class='ui label red mini'>Não</label>"
+  view_title: "Visualizar"
+  edit_title: "Editar"
+  trash_title: "Excluir"

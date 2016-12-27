@@ -14,6 +14,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :author,        default: false 
       t.boolean :student,       default: false
       t.boolean :viewer,        default: true
+      t.boolean :columnist,     default: false
+
+      t.boolean :status, default: true 
 
       t.timestamps
     end

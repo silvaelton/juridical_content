@@ -1,0 +1,14 @@
+.row
+  .column
+    %p
+      %h1 Usuários
+      %small 
+        %i Adicionar novo usuário 
+.row
+  .column
+    = link_to 'Voltar para listagem de usuários', users_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.ui.divider
+.row
+  .column
+    .ui.segment
+      = render 'form'

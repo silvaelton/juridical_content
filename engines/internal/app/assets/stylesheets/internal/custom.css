@@ -11,3 +11,20 @@
   font-size: 13px !important;
   font-weight: 900 !important;
 }
+
+.hint {
+  font-style: italic !important;
+  font-size: 12px !important;
+}
+
+h1 {
+  margin-bottom: 0 !important
+}
+
+small {
+  font-size: 18px !important;
+}
+
+body {
+  background-color: #f9fafb !important;
+}

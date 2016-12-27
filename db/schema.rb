@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(version: 20161226170438) do
     t.boolean  "author",        default: false
     t.boolean  "student",       default: false
     t.boolean  "viewer",        default: true
+    t.boolean  "columnist",     default: false
+    t.boolean  "status",        default: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree

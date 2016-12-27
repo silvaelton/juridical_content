@@ -1,0 +1,57 @@
+.row
+  .column
+    %p
+      %h1 Usuários
+      %small 
+        %i Detalhamento de usuário 
+.row
+  .column
+    = link_to 'Voltar para listagem de usuários', users_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+    = link_to 'Editar este usuário', edit_user_path(@user), class: 'ui button green', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      %table.ui.table
+        %thead 
+          %tr 
+            %th Nome
+            %th E-mail
+        %tbody 
+          %tr 
+            %td #{@user.name}
+            %td #{@user.email}
+           
+      %table.ui.table
+        %thead 
+          %tr 
+            %th Bio
+        %tbody
+          %tr
+            %td #{@user.bio}
+
+      %table.ui.table
+        %thead 
+          %tr 
+            %th.collapsing Ativo?
+            %th.collapsing Administrador?
+            %th.collapsing Autor?
+            %th.collapsing Colunista?
+            %th.collapsing Estudante?
+            %th.collapsing Revisor?
+        %tbody 
+          %tr 
+            %td= I18n.t("label.#{@user.status.to_s}").html_safe
+            %td= I18n.t("label.#{@user.administrator.to_s}").html_safe
+            %td= I18n.t("label.#{@user.author.to_s}").html_safe
+            %td= I18n.t("label.#{@user.columnist.to_s}").html_safe
+            %td= I18n.t("label.#{@user.student.to_s}").html_safe
+            %td= I18n.t("label.#{@user.reviewer.to_s}").html_safe
+
+      %table.ui.table
+        %thead 
+          %tr 
+            %th.collapsing Artigos
+        %tbody
+          %tr 
+            %td
+              %i Nenhum artigo encontrado.

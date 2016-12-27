@@ -1,0 +1,47 @@
+.row
+  .column
+    %p
+      %h1 Usuários
+      %small 
+        %i Listagem de usuários cadastrados 
+.row
+  .column
+    = link_to '+ Adicionar novo usuário', new_user_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    %table.ui.table.celled
+      %thead
+        %tr
+          %th Nome
+          %th E-mail
+          %th.collapsing Criado em
+          %th.collapsing Administrador?
+          %th.collapsing Autor?
+          %th.collapsing Colunista?
+          %th.collapsing Estudante?
+          %th.collapsing Revisor?
+          %th.collapsing Ativo?
+          %th
+      %tbody
+        - if @users.present?
+          - @users.each do |user|
+            %tr
+              %td.collapsing= user.name.downcase
+              %td.collapsing= user.email
+              %td= user.created_at.strftime("%d/%m/%Y")
+              %td= I18n.t("label.#{user.administrator.to_s}").html_safe
+              %td= I18n.t("label.#{user.author.to_s}").html_safe
+              %td= I18n.t("label.#{user.columnist.to_s}").html_safe
+              %td= I18n.t("label.#{user.student.to_s}").html_safe
+              %td= I18n.t("label.#{user.reviewer.to_s}").html_safe
+              %td= I18n.t("label.#{user.status.to_s}").html_safe
+              %td.collapsing
+                = link_to "<i class='expand icon'></i>".html_safe, user_path(user), title: I18n.t(:view_title), class: 'ui button icon mini'
+                = link_to "<i class='write icon'></i>".html_safe, edit_user_path(user), title: I18n.t(:edit_title), class: 'ui button icon blue mini'
+                = link_to "<i class='trash icon'></i>".html_safe, user_path(user), method: :delete, title: I18n.t(:trash_title),class: 'ui button icon red mini', data: { disable_with: t(:disable_with_button), confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum autor cadastrado.
+            
+  

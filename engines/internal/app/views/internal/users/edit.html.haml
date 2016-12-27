@@ -1,0 +1,13 @@
+.row
+  .column
+    %p
+      %h1 Usuários
+      %small 
+        %i Editar usuário 
+.row
+  .column
+    = link_to 'Voltar para listagem de usuários', users_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      = render 'form'

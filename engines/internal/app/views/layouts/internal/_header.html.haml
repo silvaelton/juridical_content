@@ -70,15 +70,15 @@
       Usuários
       %i.dropdown.icon
       .menu
+        %a.item{href: "#{internal.users_path}"}
+          Gestão
         %a.item
-          Autores
-        %a.item
-          Revisores
-        %a.item
-          Estudantes
-        %a.item
-          Administradores
-    .right.item
-      .ui.input
-        = simple_form_for url_for, method: :get do |f|
-          = f.input :q, as: :string, label: false, input_html: { name: :q, placeholder: "Pesquisar...", value: params[:q]}
+          Auditoria
+    .ui.simple.dropdown.item.right
+      Usuários
+      %i.dropdown.icon
+      .menu
+        %a.item{href: "#{internal.edit_user_path(current_user)}"}
+          Editar meu perfil
+        %a.item{href: "#{internal.session_path(current_user)}", data: { method: :delete }}
+          Sair

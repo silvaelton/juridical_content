@@ -1,0 +1,35 @@
+= simple_form_for @user do |f|
+  .fields
+    .field.wide.twelve
+      = f.input :name, input_html: { placeholder: "Digite o nome do autor"}
+    .field.wide.four
+      = f.input :avatar, as: :file
+  .fields
+    .field.wide.four
+      = f.input :email, input_html: { placeholder: "Digite o e-mail do autor"}
+    .field.wide.four
+      = f.input :password, input_html: { placeholder: "Digite uma senha"}
+      = f.hint "Deixe em branco se não deseja alterar" if !f.object.new_record?
+    .field.wide.four
+      = f.input :password_confirmation, input_html: { placeholder: "Repita a senha"}
+      = f.hint "Deixe em branco se não deseja alterar" if !f.object.new_record?
+    .field.wide.four
+      = f.input :status, as: :select, include_blank: false
+  .fields
+    .field.wide.four
+      = f.input :administrator, as: :select, include_blank: false
+    .field.wide.four
+      = f.input :author, as: :select, include_blank: false
+    .field.wide.four
+      = f.input :student, as: :select, include_blank: false
+    .field.wide.four
+      = f.input :reviewer, as: :select, include_blank: false
+    .field.wide.four
+      = f.input :viewer, as: :select, include_blank: false
+    .field.wide.four
+      = f.input :columnist, as: :select, include_blank: false
+  .field
+    = f.input :bio
+  .field
+    = f.button :submit, data: { disable_with: t(:disable_with) }
+    = link_to t(:back_button), users_path, class: 'ui button', data: { disable_with: t(:disable_with) }

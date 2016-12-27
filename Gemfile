@@ -12,6 +12,11 @@ gem 'pg'
 
 gem 'simple_form'
 gem 'haml-rails'
+gem 'has_scope'
+gem 'validates_cpf_cnpj'
+gem 'validates_timeliness'
+gem 'email_validator'
+gem 'file_validators'
 
 group :development, :test do
   gem 'byebug', platform: :mri
