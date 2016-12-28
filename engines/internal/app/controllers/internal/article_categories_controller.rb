@@ -5,20 +5,20 @@ module Internal
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
-      @articles = Internal::Article.all
+      @article_categories = Internal::ArticleCategory.all
     end
 
     def show
     end
 
     def new
-      @article = Internal::Article.new
+      @article_category = Internal::ArticleCategory.new
     end
 
     def create
-      @article = Internal::Article.new(set_params)
+      @article_category = Internal::ArticleCategory.new(set_params)
 
-      if @article.save
+      if @article_category.save
         flash[:green] = t(:success)
         redirect_to action: :index
       else
@@ -30,10 +30,18 @@ module Internal
     end
 
     def update
+
+      if @article_category.update(set_params)
+        flash[:green] = t(:success)
+        redirect_to action: :index
+      else
+        render action: :edit
+      end
+      
     end
 
     def destroy
-      if @article.destroy
+      if @article_category.destroy
         flash[:green] = t(:success)
       else 
         flash[:red] = t(:error)
@@ -45,11 +53,11 @@ module Internal
     private
 
     def set_params
-      params.require(:article).permit(:title, :article_category_id, :content)
+      params.require(:article_category).permit(:name, :father_id, :enable, :portal_view, :only_user)
     end
 
     def set_article
-      @article = Internal::Article.find(params[:id])
+      @article_category = Internal::ArticleCategory.find(params[:id])
     end
 
   end

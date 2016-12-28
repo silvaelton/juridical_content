@@ -17,8 +17,9 @@
       Categorias
       %i.dropdown.icon
       .menu
-        %a.item
-          foreach
+        - Portal::ArticleCategory.all.each do |category|
+          %a.item{href: "#{portal.category_path(category)}"}
+            = category.name
     .right.item
       .ui.input
         = simple_form_for url_for, method: :get do |f|

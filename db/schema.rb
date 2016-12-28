@@ -35,10 +35,12 @@ ActiveRecord::Schema.define(version: 20161226170438) do
 
   create_table "article_categories", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "enable",     default: false
+    t.boolean  "enable",      default: false
     t.integer  "father_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "portal_view", default: false
+    t.boolean  "only_user",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "articles", force: :cascade do |t|

@@ -1,0 +1,13 @@
+.row
+  .column
+    %p
+      %h1 Categorias
+      %small 
+        %i Editar categoria 
+.row
+  .column
+    = link_to 'Voltar para listagem de categorias', article_categories_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      = render 'form'
