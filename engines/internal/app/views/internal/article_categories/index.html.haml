@@ -1,0 +1,24 @@
+.row
+  .column
+    %p
+      %h1 Categorias de artigo
+      %small 
+        %i Listagem de categorias de artigo 
+.row
+  .column
+    = link_to '+ Adicionar nova categoria', new_article_category_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      = simple_form_for url_for, method: :get do |f|
+        .fields
+          .field.wide.two
+            = f.input :by_code, label: "Por código", input_html: { name: :by_code, value: params[:by_code]}
+          .field.wide.five
+            = f.input :by_title, label: "Por título", input_html: { name: :by_title, value: params[:by_title]}
+          .field.wide.four
+            = f.input :by_category, label: "Por categoria", as: :select, include_blank: "Todos", input_html: { name: :by_category}, selected: params[:by_category]
+          .field.wide.four
+            = f.input :by_autor, label: "Por autor", as: :select, collection: ::Internal::User.authors.order(:name), include_blank: "Todos", include_blank: "Todos", input_html: { name: :by_autor}, selected: params[:by_autor]
+          .field.wide.four
+            = f.submit "Filtrar", name: nil, class: 'ui button green button-filter', data: { disable_with: t(:disable_with_button).html_safe}

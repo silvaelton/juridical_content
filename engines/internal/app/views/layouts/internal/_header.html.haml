@@ -9,71 +9,76 @@
       Artigos
       %i.dropdown.icon
       .menu
-        .header
-          Administrativo
-        %a.item
-          Novo artigo
-        %a.item
-          Ver todos
-        %a.item
-          Categorias
-        .header
-          Autor/Colunista
-        %a.item
-          Novo artigo
-        %a.item
-          Meus artigos
-        %a.item
-          Em revisão
-        %a.item
-          Publicados
-        .header
-          Estudo
-        %a.item
-          Meus favoritos
-        %a.item
-          Ler depois
-        %a.item
-          Artigos que gostei
-    .ui.simple.dropdown.item
-      Boletim Jurídico
-      %i.dropdown.icon
-      .menu
-        .header
-          Administrativo 
-        %a.item
-          Novo boletim
-        %a.item
-          Ver todos
-        %a.item
-          Categorias  
+        - if policy(:navigation, namespace: Internal).administrator?
+          .header
+            Administrativo
+          %a.item{href: "#{internal.new_article_path}"}
+            Novo artigo
+          %a.item{href: "#{internal.articles_path}"}
+            Ver todos
+          %a.item{href: "#{internal.article_categories_path}"}
+            Categorias
+        - if policy(:navigation, namespace: Internal).author?
+          .header
+            Autor/Colunista
+          %a.item
+            Novo artigo
+          %a.item
+            Meus artigos
+          %a.item
+            Em revisão
+          %a.item
+            Publicados
+        - if policy(:navigation, namespace: Internal).student?
+          .header
+            Estudo
+          %a.item
+            Meus favoritos
+          %a.item
+            Ler depois
+          %a.item
+            Artigos que gostei
+    - if policy(:navigation, namespace: Internal).administrator?            
+      .ui.simple.dropdown.item
+        Boletim Jurídico
+        %i.dropdown.icon
+        .menu
+          .header
+            Administrativo 
+          %a.item
+            Novo boletim
+          %a.item
+            Ver todos
+          %a.item
+            Categorias  
 
     .ui.simple.dropdown.item
       Questões
       %i.dropdown.icon
       .menu
-        .header
-          Administração
-        %a.item
-          Novo simulado
-        %a.item
-          Questões
-        .header
-          Estudo
-        %a.item
-          Novo simulado
-        %a.item
-          Meus simulados
-        %a.item
-          Meu desempenho
-    .ui.simple.dropdown.item
-      Usuários
-      %i.dropdown.icon
-      .menu
-        %a.item{href: "#{internal.users_path}"}
-          Gestão
-        %a.item
-          Auditoria
+        - if policy(:navigation, namespace: Internal).administrator?    
+          .header
+            Administração
+          %a.item
+            Novo simulado
+          %a.item
+            Questões
+        - if policy(:navigation, namespace: Internal).student?    
+          .header
+            Estudo
+          %a.item
+            Novo simulado
+          %a.item
+            Meus simulados
+          %a.item
+            Meu desempenho
+    - if policy(:navigation, namespace: Internal).administrator? 
+      .ui.simple.dropdown.item
+        Usuários
+        %i.dropdown.icon
+        .menu
+          %a.item{href: "#{internal.users_path}"}
+            Gestão
     .ui.simple.dropdown.item.right
       Usuários
       %i.dropdown.icon

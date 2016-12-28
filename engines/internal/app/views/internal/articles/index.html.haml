@@ -1,0 +1,53 @@
+.row
+  .column
+    %p
+      %h1 Artigos
+      %small 
+        %i Listagem de usuários cadastrados 
+.row
+  .column
+    = link_to '+ Adicionar novo artigo', new_article_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      = simple_form_for url_for, method: :get do |f|
+        .fields
+          .field.wide.two
+            = f.input :by_code, label: "Por código", input_html: { name: :by_code, value: params[:by_code]}
+          .field.wide.five
+            = f.input :by_title, label: "Por título", input_html: { name: :by_title, value: params[:by_title]}
+          .field.wide.four
+            = f.input :by_category, label: "Por categoria", as: :select, include_blank: "Todos", input_html: { name: :by_category}, selected: params[:by_category]
+          .field.wide.four
+            = f.input :by_autor, label: "Por autor", as: :select, collection: ::Internal::User.authors.order(:name), include_blank: "Todos", include_blank: "Todos", input_html: { name: :by_autor}, selected: params[:by_autor]
+          .field.wide.four
+            = f.submit "Filtrar", name: nil, class: 'ui button green button-filter', data: { disable_with: t(:disable_with_button).html_safe}
+.row
+  .column
+    %table.ui.table.celled
+      %thead
+        %tr
+          %th.collapsing Cod.
+          %th Título
+          %th.collapsing Categoria
+          %th.collapsing Publicado?
+          %th.collapsing Revisado?
+          %th
+      %tbody
+        - if @articles.present?
+          - @articles.each do |article|
+            %tr 
+              %td= article.id
+              %td= article.title
+              %td
+              %td= I18n.t("label.#{article.publish}").html_safe
+              %td= I18n.t("label.#{article.revised}").html_safe
+              %td.collapsing
+                = link_to "<i class='expand icon'></i>".html_safe, article_path(article), title: I18n.t(:view_title), class: 'ui button icon mini'
+                = link_to "<i class='write icon'></i>".html_safe, edit_article_path(article), title: I18n.t(:edit_title), class: 'ui button icon blue mini'
+                = link_to "<i class='trash icon'></i>".html_safe, article_path(article), method: :delete, title: I18n.t(:trash_title),class: 'ui button icon red mini', data: { disable_with: t(:disable_with_button), confirm: t(:confirm)} 
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum artigo encontrado.
+          

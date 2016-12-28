@@ -1,0 +1,13 @@
+.row
+  .column
+    %p
+      %h1 Artigos
+      %small 
+        %i Adicionar novo artigo 
+.row
+  .column
+    = link_to 'Voltar para listagem de artigos', articles_path, class: 'ui button blue', data: { disable_with: t(:disable_with)}
+.row
+  .column
+    .ui.segment
+      = render 'form'

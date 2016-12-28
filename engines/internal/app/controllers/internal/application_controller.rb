@@ -4,6 +4,8 @@ module Internal
 
     layout 'internal/application'
     
+    include Pundit
+
     before_action :authenticate_user!
 
     helper_method :current_user

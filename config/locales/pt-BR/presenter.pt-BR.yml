@@ -8,3 +8,6 @@ pt-BR:
   view_title: "Visualizar"
   edit_title: "Editar"
   trash_title: "Excluir"
+  disable_with: "Carregando..."
+  disable_with_button: "Carregando..."
+  back_button: "Voltar"
