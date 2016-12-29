@@ -29,7 +29,7 @@
         %tr
           %th.collapsing Cod.
           %th Título
-          %th.collapsing Categoria
+          %th Categoria
           %th.collapsing Publicado?
           %th.collapsing Revisado?
           %th
@@ -39,7 +39,9 @@
             %tr 
               %td= article.id
               %td= article.title
-              %td
+              %td.collapsing
+                - article.categories.each do |category|
+                  .ui.label= category.name
               %td= I18n.t("label.#{article.publish}").html_safe
               %td= I18n.t("label.#{article.revised}").html_safe
               %td.collapsing

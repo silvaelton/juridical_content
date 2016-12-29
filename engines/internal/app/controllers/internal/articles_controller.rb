@@ -30,6 +30,12 @@ module Internal
     end
 
     def update
+      if @article.update(set_params)
+        flash[:green] = t(:success)
+        redirect_to action: :index
+      else
+        render action: :edit
+      end
     end
 
     def destroy
@@ -45,7 +51,7 @@ module Internal
     private
 
     def set_params
-      params.require(:article).permit(:title, :article_category_id, :content)
+      params.require(:article).permit(:title, :article_category_id, :content, category_ids: [], author_ids: [], coauthor_ids: [],collaborator_ids: [] )
     end
 
     def set_article

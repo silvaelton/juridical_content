@@ -7,4 +7,6 @@
     = javascript_include_tag 'portal/application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/portal/header'
-    = yield
+    .ui.grid.container
+      .ui.divider.hidden
+      = yield

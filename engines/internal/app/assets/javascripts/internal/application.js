@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require internal/custom
+//= require semantic/semantic.min

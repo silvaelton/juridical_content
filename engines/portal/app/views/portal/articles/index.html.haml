@@ -1,0 +1,14 @@
+.row
+  .column
+    %table.ui.table.celled.striped
+      %tbody
+        - @articles.each do |article|
+          %tr 
+            %td
+              %p= link_to article.title, article_path(article)
+              %small
+                - article.categories.each_with_index do |category, index|
+                  %i= category.name
+                  - if index > 1 && index != article.categories.count
+                    ,
+            %td= article.publish_date 

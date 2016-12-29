@@ -1,10 +1,27 @@
 = simple_form_for @article do |f|
   .field
-    = f.input :category_ids, as: :select, input_html: { multiple: true, class: 'ui fluid dropdown search'}
+    = f.input :category_ids, as: :select, collection: Internal::ArticleCategory.all, input_html: { multiple: true, class: 'ui fluid dropdown search'}, include_blank: "Selecione uma categoria..."
   .field
     = f.input :title, input_html: { placeholder: "Digite o título do artigo"}
   .field
     = f.input :content
   .field
+    = f.input :meta_tags, as: :string
+  .three.fields
+    .field
+      = f.input :author_ids, as: :select, collection: Internal::User.authors, input_html: { multiple: true, class: 'ui fluid dropdown search'}, selected: f.object.author_value_ids, include_blank: "Selecione..."
+    .field
+      = f.input :coauthor_ids, as: :select, collection: Internal::User.authors, input_html: { multiple: true, class: 'ui fluid dropdown search'}, selected: f.object.coauthor_value_ids,include_blank: "Selecione..."
+    .field
+      = f.input :collaborator_ids, as: :select, collection: Internal::User.authors, input_html: { multiple: true, class: 'ui fluid dropdown search'}, selected: f.object.collaborator_value_ids,include_blank: "Selecione..."
+  .fields
+    .field.wide.three
+      = f.input :publish_date, as: :string, input_html: { class: 'date'   }
+    .field.wide.three
+      = f.input :revised, as: :select, include_blank: false
+    .field.wide.three
+      = f.input :publish, as: :select, include_blank: false
+  .ui.divider.hidden
+  .field
     = f.button :submit, data: { disable_with: t(:disable_with) }
-    = link_to t(:back_button), users_path, class: 'ui button', data: { disable_with: t(:disable_with) }
+    = link_to t(:back_button), articles_path, class: 'ui button', data: { disable_with: t(:disable_with) }
